@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+
+  api-service1:
+    container_name: api-service1
+    hostname: api-service1
+    build:
+      context: ./api-service1
+    ports:
+      - 5001:5000
+
+  api-service2:
+    container_name: api-service2
+    hostname: api-service2
+    build:
+      context: ./api-service2
+    ports:
+      - 5002:5000
+
+  api-gateway:
+    container_name: api-gateway
+    hostname: api-gateway
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
