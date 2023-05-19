@@ -13,7 +13,7 @@ http://localhost:5002/
 http://localhost:5002/bar)
 
 docker compose up --build api-gateway
-(after that we can access api and api2 through nginx
+(after that we can access api1 and api2 through nginx
 
 ### service1
 http://localhost/api1/
