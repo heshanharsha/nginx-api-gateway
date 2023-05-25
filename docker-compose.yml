@@ -3,7 +3,7 @@ version: '3'
 services:
 
   api-service1:
-    image: api-service1:latest
+    image: devopsheshan/api-service1
     container_name: api-service1
     hostname: api-service1
     build:
@@ -12,7 +12,7 @@ services:
       - 5001:5000
 
   api-service2:
-    image: api-service2:latest
+    image: devopsheshan/api-service2
     container_name: api-service2
     hostname: api-service2
     build:
@@ -21,7 +21,7 @@ services:
       - 5002:5000
 
   api-gateway:
-    image: api-gateway:latest
+    image: devopsheshan/api-gateway
     container_name: api-gateway
     hostname: api-gateway
     build:
