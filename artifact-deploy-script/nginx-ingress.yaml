@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+  - host: nginx.c2pac.com
+    http:
+      paths:
+      - path: /api1(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: api-service1-service
+            port:
+              number: 5000
+      - path: /api2(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: api-service2-service
+            port:
+              number: 5000
