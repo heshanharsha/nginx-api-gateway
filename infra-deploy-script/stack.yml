@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Resources:
+## EKS VPC ###  
+  VPC:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: https://s3.amazonaws.com/@{deploy_bucket}/@{version}/eks-vpc.yml  
+
+## EKS Cluster ###  
+  EKSCluster:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: https://s3.amazonaws.com/@{deploy_bucket}/@{version}/eks-cluster.yml
+      Parameters:
+        VPC: !GetAtt VPC.Outputs.VPC
+        PublicSubnet1: !GetAtt VPC.Outputs.PublicSubnet1
+        PublicSubnet2: !GetAtt VPC.Outputs.PublicSubnet2    
+        ParentStackName: !Ref AWS::StackName
