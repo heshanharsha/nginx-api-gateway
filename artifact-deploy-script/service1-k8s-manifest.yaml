@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-service1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-service1
+  template:
+    metadata:
+      labels:
+        app: api-service1
+        date: 2023-06-01T11-51-01Z
+    spec:
+      containers:
+      - name: api-service1
+        image: 998125666219.dkr.ecr.us-east-1.amazonaws.com/apigw:api-service1
+        ports:
+        - containerPort: 5000
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-service1-service
+spec:
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
+  selector:
+    app: api-service1
