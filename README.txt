@@ -1,25 +1,11 @@
 ### Build each REST API services using the following commands
-Open separate 3 terminal, run these commands
 
-docker compose up --build api-service1
+docker compose build api-service1
+docker compose build api-service2
 
-(after that we can access api1 from our local machine
-http://localhost:5001/
-http://localhost:5001/foo)
+### ECR login
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 998125666219.dkr.ecr.us-east-1.amazonaws.com
 
-docker compose up --build api-service2
-(after that we can access api2 from our local machine
-http://localhost:5002/
-http://localhost:5002/bar)
-
-docker compose up --build api-gateway
-(after that we can access api1 and api2 through nginx
-
-### service1
-http://localhost/api1/
-http://localhost/api1/foo
-
-###service2
-http://localhost/api2/
-http://localhost/api2/bar
-)
+### docker push
+docker push 998125666219.dkr.ecr.us-east-1.amazonaws.com/apigw:api-service1
+docker push 998125666219.dkr.ecr.us-east-1.amazonaws.com/apigw:api-service2
