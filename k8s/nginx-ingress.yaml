@@ -8,7 +8,7 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
-  - host: nginx.c2pac.com
+  - host: apigw.binadev.com
     http:
       paths:
       - path: /api1(/|$)(.*)
@@ -27,5 +27,5 @@ spec:
               number: 5000
   tls:
   - hosts:
-    - nginx.c2pac.com
-    secretName: nginx-cert
+    - apigw.binadev.com
+    secretName: apigw-cert
