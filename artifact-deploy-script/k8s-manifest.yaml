@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: api-service1
-        image: devopsheshan/api-service1:latest
+        image: 998125666219.dkr.ecr.us-east-1.amazonaws.com/apigw:api-service1
         ports:
         - containerPort: 5000
 
@@ -50,7 +50,7 @@ spec:
     spec:
       containers:
       - name: api-service2
-        image: devopsheshan/api-service2:latest
+        image: 998125666219.dkr.ecr.us-east-1.amazonaws.com/apigw:api-service2
         ports:
         - containerPort: 5000
 
