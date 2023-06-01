@@ -5,6 +5,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
   - host: nginx.c2pac.com
@@ -24,3 +25,7 @@ spec:
             name: api-service2-service
             port:
               number: 5000
+  tls:
+  - hosts:
+    - nginx.c2pac.com
+    secretName: nginx-cert
